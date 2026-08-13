@@ -2,7 +2,6 @@
 
 **Extended ACLs | Traffic Filtering | Port Security | Violation Recovery | Interface Hardening**
 
-[← Return to the main project](../README.md)
 
 ## Module Overview
 
@@ -27,11 +26,11 @@ The validation includes both permitted and denied traffic, the directional effec
 I added a Cisco 2960 access switch for the Administration building and repeated the design for the Academics and Student buildings.
 
 <p align="center">
-  <img src="../images/security/01.png" width="750" alt="Selecting a Cisco 2960 access switch">
+  <img src="https://i.imgur.com/Ms0g0tV.png" width="750" alt="Selecting a Cisco 2960 access switch">
 </p>
 
 <p align="center">
-  <img src="../images/security/02.png" width="750" alt="Renaming the Administration access switch">
+  <img src="https://i.imgur.com/jPEisoW.png" width="750" alt="Renaming the Administration access switch">
 </p>
 
 ```text
@@ -44,15 +43,15 @@ AccessSwitch-AdministrationBuilding(config-if-range)# do write
 ```
 
 <p align="center">
-  <img src="../images/security/03.png" width="750" alt="Configuring the Administration switch for VLAN 10">
+  <img src="https://i.imgur.com/lPPjA5s.png" width="750" alt="Configuring the Administration switch for VLAN 10">
 </p>
 
 <p align="center">
-  <img src="../images/security/04.png" width="750" alt="Configuring the Academics switch for VLAN 20">
+  <img src="https://i.imgur.com/0ZE5fYM.png" width="750" alt="Configuring the Academics switch for VLAN 20">
 </p>
 
 <p align="center">
-  <img src="../images/security/05.png" width="750" alt="Configuring the Student switch for VLAN 30">
+  <img src="https://i.imgur.com/Cx8I4e3.png" width="750" alt="Configuring the Student switch for VLAN 30">
 </p>
 
 ### 2. Removed Unused VLAN Assignments
@@ -69,11 +68,11 @@ CoreSwitch# show vlan brief
 ```
 
 <p align="center">
-  <img src="../images/security/06.png" width="750" alt="Removing obsolete VLAN assignments">
+  <img src="https://i.imgur.com/s7fkvYK.png" width="750" alt="Removing obsolete VLAN assignments">
 </p>
 
 <p align="center">
-  <img src="../images/security/07.png" width="750" alt="Verifying VLAN port assignments">
+  <img src="https://i.imgur.com/EPCQ0jM.png" width="750" alt="Verifying VLAN port assignments">
 </p>
 
 ### 3. Applied ACL 100 to Protect the Server VLAN
@@ -88,11 +87,11 @@ MC_router(config-subif)# do write
 ```
 
 <p align="center">
-  <img src="../images/security/08.png" width="750" alt="Creating and applying ACL 100">
+  <img src="https://i.imgur.com/5WLQGHy.png" width="750" alt="Creating and applying ACL 100">
 </p>
 
 <p align="center">
-  <img src="../images/security/09.png" width="750" alt="Verifying ACL 100">
+  <img src="https://i.imgur.com/Kz185DJ.png" width="750" alt="Verifying ACL 100">
 </p>
 
 > **Scope note:** ACL 100 ends with an implicit deny. Any source that is not explicitly permitted will also be denied access to VLAN 100.
@@ -102,19 +101,19 @@ MC_router(config-subif)# do write
 A host in VLAN 10 successfully reached server `192.168.100.10`.
 
 <p align="center">
-  <img src="../images/security/10.png" width="750" alt="Successful VLAN 10-to-server ping">
+  <img src="https://i.imgur.com/kD69fCA.png" width="750" alt="Successful VLAN 10-to-server ping">
 </p>
 
 A host in VLAN 20 also reached the server.
 
 <p align="center">
-  <img src="../images/security/11.png" width="750" alt="Successful VLAN 20-to-server ping">
+  <img src="https://i.imgur.com/IXfzBcH.png" width="750" alt="Successful VLAN 20-to-server ping">
 </p>
 
 Traffic from VLAN 30 to the server was denied.
 
 <p align="center">
-  <img src="../images/security/12.png" width="750" alt="Blocked VLAN 30-to-server ping">
+  <img src="https://i.imgur.com/VjMWHyd.png" width="750" alt="Blocked VLAN 30-to-server ping">
 </p>
 
 ### 5. Applied ACL 110 to Restrict ICMP
@@ -128,19 +127,19 @@ MC_router(config-subif)# do write
 ```
 
 <p align="center">
-  <img src="../images/security/13.png" width="750" alt="Creating and applying ACL 110">
+  <img src="https://i.imgur.com/roFAOxL.png" width="750" alt="Creating and applying ACL 110">
 </p>
 
 The VLAN 20-to-VLAN 10 ping failed as intended.
 
 <p align="center">
-  <img src="../images/security/14.png" width="750" alt="Blocked VLAN 20-to-VLAN 10 ping">
+  <img src="https://i.imgur.com/TONeFgN.png" width="750" alt="Blocked VLAN 20-to-VLAN 10 ping">
 </p>
 
 The reverse-direction test succeeded.
 
 <p align="center">
-  <img src="../images/security/15.png" width="750" alt="Successful reverse-direction ping">
+  <img src="https://i.imgur.com/2nw6hHm.png" width="750" alt="Successful reverse-direction ping">
 </p>
 
 ### 6. Configured Static Port Security
@@ -155,11 +154,11 @@ CoreSwitch(config-if)# do write
 ```
 
 <p align="center">
-  <img src="../images/security/16.png" width="750" alt="Configuring switch port security">
+  <img src="https://i.imgur.com/sl7GZMV.png" width="750" alt="Configuring switch port security">
 </p>
 
 <p align="center">
-  <img src="../images/security/17.png" width="750" alt="Verifying port-security status">
+  <img src="https://i.imgur.com/2Sm6zrg.png" width="750" alt="Verifying port-security status">
 </p>
 
 ### 7. Triggered and Recovered from a Violation
@@ -167,7 +166,7 @@ CoreSwitch(config-if)# do write
 I moved the servers to each other’s ports and generated traffic. The affected links changed to a down state.
 
 <p align="center">
-  <img src="../images/security/18.png" width="750" alt="Server link down after a port-security violation">
+  <img src="https://i.imgur.com/ZMfqjo3.png" width="750" alt="Server link down after a port-security violation">
 </p>
 
 ```text
@@ -177,17 +176,17 @@ CoreSwitch(config-if)# no shutdown
 ```
 
 <p align="center">
-  <img src="../images/security/19.png" width="750" alt="Resetting the secured interface">
+  <img src="https://i.imgur.com/uKU0Lzl.png" width="750" alt="Resetting the secured interface">
 </p>
 
 <p align="center">
-  <img src="../images/security/20.png" width="750" alt="Server link restored">
+  <img src="https://i.imgur.com/LpnP81S.png" width="750" alt="Server link restored">
 </p>
 
 ### 8. Disabled Unused Ports
 
 <p align="center">
-  <img src="../images/security/21.png" width="750" alt="Reviewing switch interface status">
+  <img src="https://i.imgur.com/0XDov8a.png" width="750" alt="Reviewing switch interface status">
 </p>
 
 ```text
@@ -202,11 +201,11 @@ CoreSwitch(config-if-range)# shutdown
 ```
 
 <p align="center">
-  <img src="../images/security/22.png" width="750" alt="Shutting down unused interfaces">
+  <img src="https://i.imgur.com/k8EeC6S.png" width="750" alt="Shutting down unused interfaces">
 </p>
 
 <p align="center">
-  <img src="../images/security/23.png" width="750" alt="Verifying administratively disabled ports">
+  <img src="https://i.imgur.com/AwLtzaN.png" width="750" alt="Verifying administratively disabled ports">
 </p>
 
 ## Module Validation Summary
@@ -219,16 +218,8 @@ CoreSwitch(config-if-range)# shutdown
 | ACL 110 directional restriction | Passed | VLAN 20-to-VLAN 10 echo failed while the reverse test passed |
 | Port-security configuration | Configured | Secure-up state and one secure address displayed |
 | Port-security behavior | Observed | Link shutdown and recovery captured |
-| Port-security violation counter | Not captured | No post-test output showed a nonzero counter |
 | Unused-port shutdown | Passed | Selected interfaces shown administratively down |
 
-## Technical Notes
-
-- ACL 100 ends with an implicit deny.
-- Extended ACL placement should reflect the intended traffic direction.
-- Each secured port must use a unique server MAC address.
-- A post-violation `show port-security interface` capture would provide stronger evidence.
-- Unused ports should also be placed in an unused VLAN before shutdown.
 
 ## Module Outcome
 
@@ -236,5 +227,5 @@ This stage introduced controls at both Layer 3 and Layer 2. The ACL tests demons
 
 ## Continue the Project
 
-[← Previous: VLAN Segmentation and Inter-VLAN Routing](../01-vlan-routing/README.md)  
-[Next: Multi-Site Routing and Layer 3 Switching →](../03-multisite-routing/README.md)
+[← Previous: VLAN Segmentation and Inter-VLAN Routing](https://github.com/AdeniyiAdesakin/01-vlan-routing)  
+[Next: Multi-Site Routing and Layer 3 Switching →](https://github.com/AdeniyiAdesakin/03-multisite-routing)
